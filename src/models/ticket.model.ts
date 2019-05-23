@@ -11,13 +11,13 @@ export class Ticket extends Entity {
   Id: number;
 
   @belongsTo(() => Consumer, {keyTo: 'Id'})
-  Consumer: string;
+  ConsumerId: number;
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
   })
-  Device: string;
+  DeviceId: number;
 
   @property({
     type: 'string',
@@ -31,7 +31,7 @@ export class Ticket extends Entity {
   DeliveryMethod?: string;
 
   @property({
-    type: 'any',
+    type: 'string',
   })
   Attachment?: string;
 

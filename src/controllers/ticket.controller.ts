@@ -22,7 +22,7 @@ import {TicketRepository} from '../repositories';
 export class TicketController {
   constructor(
     @repository(TicketRepository)
-    public ticketRepository : TicketRepository,
+    public ticketRepository: TicketRepository,
   ) {}
 
   @post('/tickets', {
@@ -135,16 +135,16 @@ export class TicketController {
     await this.ticketRepository.deleteById(id);
   }
 
-  @get('/tickets{id}/consumer', {
+  @get('/tickets/{id}/consumer', {
     responses: {
       '200': {
         description: 'Ticket model instance',
-        content: {'application/json':{schema: {'x-ts-type': Consumer}}},
+        content: {'application/json': {schema: {'x-ts-type': Consumer}}},
       },
     },
   })
   async getConsumer(
-    @param.path.number('Id') ticketId: typeof Ticket.prototype.Id,
+    @param.path.number('id') ticketId: typeof Ticket.prototype.Id,
   ): Promise<Consumer> {
     return await this.ticketRepository.consumer(ticketId);
   }
